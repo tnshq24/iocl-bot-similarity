@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IOCL Chatbot</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <div class="container">
+        <div class="sidebar">
+            <div class="user-profile">
+                <img src="{{ url_for('static', filename='new.jpg') }}" alt="User Profile">
+                <h3>User</h3>
+            </div>
+            <div class="menu">
+                <button id="new-chat-btn" class="menu-btn" onclick="newChat()">New Chat</button>
+
+                <button class="menu-btn">Start a Conversation</button>
+            </div>
+        </div>
+
+        <div class="chat-area">
+            <div id="chatbot-window" class="chat-window">
+                <div id="chatbot-messages" class="messages"></div>
+                <div class="chat-footer">
+                    <input id="chat-input" type="text" placeholder="Send a message">
+                    <button onclick="sendMessage()">Send</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
