@@ -95,7 +95,6 @@ def view_pdf():
     chatbot_response = request.args.get('response', '').strip()
     pages = extract_page_numbers(chatbot_response)
 
-    print(pages)
 
     if not chatbot_response:
         return "No chatbot response provided.", 400
@@ -105,8 +104,6 @@ def view_pdf():
     # Find the most similar sentence to the chatbot response
     most_similar_sentence, similarity_score = find_most_similar_sentence(chatbot_response, pdf_sentences)
 
-    print(most_similar_sentence)
-    print(similarity_score)
     if similarity_score < 0.1:
         return "No highly similar sentence found.", 400
 
@@ -118,8 +115,6 @@ def view_pdf():
         for page_num in pages:
             if page_num <= len(pdf_fitz):  # Ensure page number is valid (use <= for 1-based indexing)
                 pdf_page = pdf_fitz[page_num - 1]  # Get the specific page
-                print(len(pdf_fitz))
-                print('a', page_num)
 
                 # Attempt to highlight the text on the current page
                 rects = pdf_page.search_for(most_similar_sentence)  # Search for the text on the current page
