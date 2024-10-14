@@ -10,7 +10,8 @@ from sklearn.metrics.pairwise import cosine_similarity
 import nltk
 from nltk.tokenize import sent_tokenize
 
-nltk.download('punkt')
+nltk.data.path.append('/root/nltk_data')  # Add this line to specify the NLTK data path
+nltk.download('punkt', download_dir='/root/nltk_data')  # Download punkt to the specified directory
 
 app = Flask(__name__)
 
